@@ -72,9 +72,7 @@ const styles = StyleSheet.create({
   },
   headingText: {
     fontSize: 42,
-    fontWeight: "500",
-    color: "#FC8888",
-    opacity: 0.8
+    fontWeight: "500"
   },
   emailContainer: {
     marginBottom: 10
@@ -168,17 +166,11 @@ const btnStyles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
-    backgroundColor: "#FC8888",
-    borderColor: "#FC8888",
-    width: 254,
-    height: 49
+    borderRadius: 10
   },
   text: {
     fontWeight: "bold",
-    fontSize: 15,
-    fontFamily: "inherit",
-    color: "#100f10"
+    fontSize: 15
   }
 });
 
