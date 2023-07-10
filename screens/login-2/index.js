@@ -198,7 +198,7 @@ const checkBoxStyles = StyleSheet.create({
 });
 
 const Input = props => {
-  const [Value, setValue] = useState('');
+  const [Value, setValue] = useState("");
   return <View>
       <TextInput style={textStyles.input} placeholder={props.placeholder} value={Value} onChangeText={num => setValue(num)} placeholderTextColor="#ddd" editable={props.editable !== false} />
       {props.errorText ? <Text style={textStyles.error}>{props.errorText}</Text> : null}
