@@ -1,11 +1,23 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity, Image, TouchableHighlight, TextInput, StyleSheet, Pressable } from "react-native";
+import { Text, View, TouchableOpacity, Image, TextInput, StyleSheet, Pressable } from "react-native";
 
 const Login2 = () => {
+  const navigation = useNavigation();
   const [selected, setSelected] = useState(false);
 
   const onPress = () => {
     setSelected(!selected);
+  };
+
+  const handlePress = () => {
+    if (email === "jasan@gmail.com" && password === "jasan2000") {
+      // Redirect to the next page
+      navigation.navigate("activityFeed");
+      console.log("Redirecting to the next page");
+    } else {
+      console.log("Invalid email or password");
+    }
   };
 
   return <View style={styles.container}>
@@ -30,10 +42,9 @@ const Login2 = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.loginContainer}>
-          <Pressable style={styles.VmJMybOw} onPress={() => {// Handle button press event
-        }}>
-  <Text style={styles.DbYIMxCB}>Log In</Text>
-        </Pressable>
+          <Pressable style={styles.VmJMybOw} onPress={handlePress}>
+            <Text style={styles.DbYIMxCB}>Log In</Text>
+          </Pressable>
         </View>
         <View style={styles.orContainer}>
           <View style={styles.line} />
@@ -156,36 +167,6 @@ const styles = StyleSheet.create({
   }
 });
 export default Login2;
-
-const Button = props => {
-  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <View style={[btnStyles.button, {
-      backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
-      height: props.height ? props.height : 49,
-      borderWidth: props.borderWidth ? props.borderWidth : 0,
-      borderColor: props.borderColor ? props.borderColor : "#000000"
-    }]}>
-        <Text style={[btnStyles.text, {
-        color: props.color ? props.color : "#ffffff"
-      }]}>
-          {props.children}
-        </Text>
-      </View>
-    </TouchableHighlight>;
-};
-
-const btnStyles = StyleSheet.create({
-  button: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10
-  },
-  text: {
-    fontWeight: "bold",
-    fontSize: 15
-  }
-});
 
 const CheckBox = ({
   selected,
