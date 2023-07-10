@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity, Image, TouchableHighlight, TextInput, StyleSheet } from "react-native";
+import { Text, View, TouchableOpacity, Image, TouchableHighlight, TextInput, StyleSheet, Pressable } from "react-native";
 
 const Login2 = () => {
   const [selected, setSelected] = useState(false);
@@ -30,7 +30,10 @@ const Login2 = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.loginContainer}>
-          <Button>Log In</Button>
+          <Pressable style={styles.VmJMybOw} onPress={() => {// Handle button press event
+        }}>
+  <Text style={styles.DbYIMxCB}>Log In</Text>
+        </Pressable>
         </View>
         <View style={styles.orContainer}>
           <View style={styles.line} />
@@ -72,7 +75,8 @@ const styles = StyleSheet.create({
   },
   headingText: {
     fontSize: 42,
-    fontWeight: "500"
+    fontWeight: "500",
+    color: "#ef6363"
   },
   emailContainer: {
     marginBottom: 10
@@ -140,6 +144,15 @@ const styles = StyleSheet.create({
   },
   footerText: {
     color: "#6B6B6B"
+  },
+  VmJMybOw: {
+    backgroundColor: "#FC8888",
+    padding: 10,
+    borderRadius: 5
+  },
+  DbYIMxCB: {
+    color: "white",
+    textAlign: "center"
   }
 });
 export default Login2;
@@ -195,7 +208,7 @@ const checkBoxStyles = StyleSheet.create({
   iconContainer: {
     height: 18,
     width: 18,
-    borderColor: "#000000",
+    borderColor: "#ff5757",
     borderWidth: 2,
     borderRadius: 5,
     display: "flex",
