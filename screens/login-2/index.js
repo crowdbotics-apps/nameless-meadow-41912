@@ -33,7 +33,7 @@ const Login2 = () => {
         </View>
         <View style={styles.loginContainer}>
           <Pressable style={styles.VmJMybOw} onPress={() => {
-          navigation.navigate("Untitled4");
+          navigation.navigate("test");
         }}>
             <Text style={styles.DbYIMxCB}>Log In</Text>
           </Pressable>
