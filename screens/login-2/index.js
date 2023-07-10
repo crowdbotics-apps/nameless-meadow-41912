@@ -10,16 +10,6 @@ const Login2 = () => {
     setSelected(!selected);
   };
 
-  const handlePress = () => {
-    if (email === "jasan@gmail.com" && password === "jasan2000") {
-      // Redirect to the next page
-      navigation.navigate("activityFeed");
-      console.log("Redirecting to the next page");
-    } else {
-      console.log("Invalid email or password");
-    }
-  };
-
   return <View style={styles.container}>
       <View style={styles.heading}>
         <Text style={styles.headingText}>Log in</Text>
@@ -42,7 +32,9 @@ const Login2 = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.loginContainer}>
-          <Pressable style={styles.VmJMybOw} onPress={handlePress}>
+          <Pressable style={styles.VmJMybOw} onPress={() => {
+          navigation.navigate("activityFeed");
+        }}>
             <Text style={styles.DbYIMxCB}>Log In</Text>
           </Pressable>
         </View>
