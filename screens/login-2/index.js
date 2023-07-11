@@ -12,6 +12,18 @@ const Login2 = () => {
     setSelected(!selected);
   };
 
+  const onPressHandler = () => {
+    // Using the email and password values for further processing
+    console.log("Email:", email);
+    console.log("Password:", password);
+
+    if (email === "jasan@gmail.com" && password === "jasan2000") {
+      navigation.navigate("Untitled4");
+    } else {
+      console.log("Invalid email or password");
+    }
+  };
+
   return <View style={styles.container}>
       <View style={styles.heading}>
         <Text style={styles.headingText}>Log in</Text>
@@ -34,9 +46,7 @@ const Login2 = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.loginContainer}>
-          <Pressable style={styles.VmJMybOw} onPress={() => {
-          navigation.navigate("Untitled4");
-        }}>
+          <Pressable style={styles.VmJMybOw} onPress={onPressHandler}>
             <Text style={styles.DbYIMxCB}>Log In</Text>
           </Pressable>
         </View>
@@ -201,7 +211,7 @@ const checkBoxStyles = StyleSheet.create({
 
 const Input = props => {
   return <View>
-       <TextInput style={textStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={props.onChangeText} placeholderTextColor="#ddd" editable={props.editable !== false} />
+      <TextInput style={textStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={props.onChangeText} placeholderTextColor="#ddd" editable={props.editable !== false} />
       {props.errorText ? <Text style={textStyles.error}>{props.errorText}</Text> : null}
     </View>;
 };
