@@ -5,6 +5,8 @@ import { Text, View, TouchableOpacity, Image, TextInput, StyleSheet, Pressable }
 const Login2 = () => {
   const navigation = useNavigation();
   const [selected, setSelected] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const onPress = () => {
     setSelected(!selected);
@@ -17,11 +19,11 @@ const Login2 = () => {
       <View>
         <View style={styles.emailContainer}>
           <Text style={styles.mr10}>Email address</Text>
-          <Input placeholder="Email" />
+          <Input placeholder="Email" value={email} onChangeText={text => setEmail(text)} />
         </View>
         <View style={styles.mb20}>
           <Text style={styles.mr10}>Password</Text>
-          <Input placeholder="Password" />
+          <Input placeholder="Password" value={password} onChangeText={text => setPassword(text)} />
         </View>
         <View style={styles.forgotPassword}>
           <View>
@@ -198,9 +200,8 @@ const checkBoxStyles = StyleSheet.create({
 });
 
 const Input = props => {
-  const [Value, setValue] = useState("");
   return <View>
-      <TextInput style={textStyles.input} placeholder={props.placeholder} value={Value} onChangeText={num => setValue(num)} placeholderTextColor="#ddd" editable={props.editable !== false} />
+       <TextInput style={textStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={props.onChangeText} placeholderTextColor="#ddd" editable={props.editable !== false} />
       {props.errorText ? <Text style={textStyles.error}>{props.errorText}</Text> : null}
     </View>;
 };
