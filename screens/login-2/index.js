@@ -13,12 +13,12 @@ const Login2 = () => {
   };
 
   const onPressHandler = () => {
-    // Using the email and password values for further processing
+    setSelected(!selected);
     console.log("Email:", email);
     console.log("Password:", password);
 
-    if (email === "sjasan@gmail.com" && password === "jasan2000") {
-      navigation.navigate("Untitled4");
+    if (email === "jasan@gmail.com" && password === "jasan2000") {
+      navigation.navigate("activityFeed");
     } else {
       console.log("Invalid email or password");
     }
