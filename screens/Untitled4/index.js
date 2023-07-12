@@ -1,9 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import { Pressable } from "react-native";
 import { ImageBackground } from "react-native";
 import React from "react";
 import { StyleSheet, ScrollView, SafeAreaView } from "react-native";
 
 const Untitled4 = () => {
+  const navigation = useNavigation();
   return <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={{
       backgroundColor: "#E56C6C",
@@ -11,7 +13,9 @@ const Untitled4 = () => {
       position: "relative",
       flex: 1
     }}>
-        <Pressable>
+        <Pressable onPress={() => {
+        navigation.navigate("activityFeed");
+      }}>
           <ImageBackground style={styles.YPKRZTCQ} source={require("./img_170454.png")} resizeMode="center"></ImageBackground>
         </Pressable>
       </ScrollView>
