@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { Pressable } from "react-native";
 import { View } from "react-native";
 import { Text } from "react-native";
@@ -5,6 +6,7 @@ import React from "react";
 import { StyleSheet, ScrollView, SafeAreaView } from "react-native";
 
 const Untitled4 = () => {
+  const navigation = useNavigation();
   return <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={{
       backgroundColor: "#f0f0f1",
@@ -14,7 +16,11 @@ const Untitled4 = () => {
     }}>
         <View style={styles.SimzJjpb}>
           <Text style={styles.qoopcjXP}>Lorem ipsum…</Text>
-        <Pressable><View style={styles.HzySHJlq}></View></Pressable><Pressable><View style={styles.OTnqDYxP}></View></Pressable></View>
+        <Pressable onPress={() => {
+          navigation.navigate("Untitled5");
+        }}><View style={styles.HzySHJlq}></View></Pressable><Pressable onPress={() => {
+          navigation.navigate("Untitled6");
+        }}><View style={styles.OTnqDYxP}></View></Pressable></View>
       </ScrollView>
     </SafeAreaView>;
 };
