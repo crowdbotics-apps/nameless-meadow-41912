@@ -17,7 +17,7 @@ const Login2 = () => {
     console.log("Email:", email);
     console.log("Password:", password);
 
-    if (email === "jasan@gmail.com" && password === "jasan2000") {
+    if (email === "sjasan@gmail.com" && password === "jasan2000") {
       navigation.navigate("Untitled4");
     } else {
       console.log("Invalid email or password");
