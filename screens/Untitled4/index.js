@@ -29,14 +29,14 @@ const styles = StyleSheet.create({
   YPKRZTCQ: {
     width: 52,
     height: 21,
-    position: "absolute",
+    position: "relative",
     left: 11,
     top: 13
   },
   XpYtTqRl: {
     width: 174,
     height: 89,
-    position: "absolute",
+    position: "relative",
     top: 126,
     left: 91
   }
