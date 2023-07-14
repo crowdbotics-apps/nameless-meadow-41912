@@ -1,3 +1,4 @@
+import { ImageBackground } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import "react";
 import { Text, View, Image, ScrollView, StyleSheet, TouchableHighlight } from "react-native";
@@ -11,8 +12,8 @@ const ActivityFeedScreen = () => {
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <ProfileImage />
-          <Text style={styles.headerText}>Jay Mahanga</Text>
-          <Text style={styles.headerSubText}>jay@gmail.com</Text>
+          <Text style={styles.headerText}>{"Jasandeep Singh"}</Text>
+          <Text style={styles.headerSubText}>{"jasan@gmail.com"}</Text>
         </View>
         <View style={styles.followingSection}>
           <View style={styles.textarea}>
@@ -141,13 +142,22 @@ const styles = StyleSheet.create({
     height: 240,
     width: "67%",
     padding: 3
+  },
+  pgFmycKH: {
+    width: 70,
+    height: 70,
+    transform: [{
+      rotate: "0deg"
+    }],
+    top: 0,
+    left: 0
   }
 });
 export default ActivityFeedScreen;
 
 const Post = props => {
-  return <TouchableHighlight onPress={props.onPress} style={postStyles.galleryPost} underlayColor='#DDDDDD'>
-        <Image style={postStyles.editIcon} source={require("./assets/edit.png")} />
+  return <TouchableHighlight onPress={props.onPress} style={postStyles.galleryPost} underlayColor="#DDDDDD">
+      <Image style={postStyles.editIcon} source={require("./assets/edit.png")} />
     </TouchableHighlight>;
 };
 
@@ -172,9 +182,10 @@ const ProfileImage = () => {
   const navigation = useNavigation();
   return <TouchableHighlight onPress={() => {
     navigation.navigate("Untitled4");
-  }} underlayColor='#DDDDDD'>
+  }} underlayColor="#DDDDDD">
       <View style={imageStyles.container}>
         <Image style={imageStyles.image} resizeMode="contain" source={require("./assets/edit.png")} />
+        <ImageBackground style={styles.pgFmycKH} source={require("./project info.png")} resizeMode="cover"></ImageBackground>
       </View>
     </TouchableHighlight>;
 };
@@ -186,10 +197,8 @@ const imageStyles = StyleSheet.create({
     width: 70,
     borderRadius: 35,
     display: "flex",
-    alignItems: "center"
-  },
-  image: {
-    width: 20,
-    marginTop: 4
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden"
   }
 });

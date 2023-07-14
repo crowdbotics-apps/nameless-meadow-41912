@@ -18,7 +18,7 @@ const Untitled4 = () => {
       }}>
           <ImageBackground style={styles.YPKRZTCQ} source={require("./img_170454.png")} resizeMode="center"></ImageBackground>
         </Pressable>
-      </ScrollView>
+      <ImageBackground style={styles.XpYtTqRl} source={require("./project info.png")} resizeMode="cover"></ImageBackground></ScrollView>
     </SafeAreaView>;
 };
 
@@ -32,6 +32,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 11,
     top: 13
+  },
+  XpYtTqRl: {
+    width: 174,
+    height: 89,
+    position: "absolute",
+    top: 126,
+    left: 91
   }
 });
 export default Untitled4;
