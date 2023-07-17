@@ -16,15 +16,21 @@ const Untitled3 = () => {
 
 const styles = StyleSheet.create({
   safeArea: {
+    flex: 1,
     height: "100%"
   },
   zVYFbZKa: {
-    Flex: 1,
+    flex: 1,
     height: "100%",
     width: "100%",
     backgroundColor: "purple",
     borderRadius: 0,
-    color: "#777777"
+    color: "#777777",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0
   }
 });
 export default Untitled3;
