@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
 import React, { useRef, useContext, useEffect, useState } from "react";
 import { Text, View, TouchableOpacity, FlatList, ImageBackground } from "react-native";
@@ -6,12 +7,12 @@ import { pickFromCamera, pickFromGallery, uploadImage } from "./utils";
 import { OptionsContext, GlobalOptionsContext } from "@options";
 
 const Camera = () => {
-  // More info on all the options is below in the API Reference... just some common use cases shown here
+  const navigation = useNavigation(); // More info on all the options is below in the API Reference... just some common use cases shown here
+
   const actionSheet = useRef(null);
   const options = useContext(OptionsContext);
   const gOptions = useContext(GlobalOptionsContext); // eslint-disable-next-line no-unused-vars
 
-  const [isLoading, setLoading] = useState(false);
   const ImagePickerOptions = ["Take Photo", "Choose from Gallery", "Cancel"];
   const [data, setData] = useState([]);
   const {
@@ -56,7 +57,9 @@ const Camera = () => {
         });
       }
     }} />
-      <TouchableOpacity onPress={() => actionSheet.current.show()} style={styles.photoBtn}>
+      <TouchableOpacity onPress={() => {
+      navigation.navigate("", {});
+    }} style={styles.photoBtn}>
         <Text style={styles.photoBtnTxt}>{buttonText}</Text>
       </TouchableOpacity>
     </View>;

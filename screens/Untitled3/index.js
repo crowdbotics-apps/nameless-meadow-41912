@@ -16,7 +16,7 @@ const Untitled3 = () => {
     }}><Pressable onPress={() => {
         navigation.navigate("Camera");
       }}><View style={styles.PRhPprgL}><Pressable onPress={() => {
-            navigation.navigate("", {});
+            navigation.navigate("Camera", {});
           }}><Text style={styles.DNPldiSu}>{"Camera"}</Text></Pressable></View></Pressable></ScrollView>
     </SafeAreaView>;
 };
