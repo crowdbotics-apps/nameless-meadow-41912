@@ -18,7 +18,7 @@ const Login2 = () => {
     console.log("Password:", password);
 
     if (email === "jasan@gmail.com" && password === "jasan2000") {
-      navigation.navigate("activityFeed");
+      navigation.navigate("Untitled3");
     } else {
       console.log("Invalid email or password");
     }
