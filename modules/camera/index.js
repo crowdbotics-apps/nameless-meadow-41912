@@ -1,3 +1,4 @@
+import { rest_auth_password_reset_create } from "../../store/namelessmeadowAPI/passwords.slice.js";
 import { useSelector } from "react-redux";
 import { modules_camera_photos_user_retrieve } from "../../store/namelessmeadowAPI/images.slice.js";
 import { useDispatch } from "react-redux";
@@ -31,6 +32,7 @@ const Camera = () => {
 
   useEffect(() => {
     fetchImages();
+    dispatch(rest_auth_password_reset_create());
   }, []);
 
   const renderItem = ({
