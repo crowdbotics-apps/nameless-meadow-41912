@@ -1,13 +1,11 @@
 import { StyleSheet } from "react-native";
 import React, { useRef, useContext, useEffect, useState } from "react";
 import { Text, View, TouchableOpacity, FlatList, ImageBackground } from "react-native";
-import ActionSheet from "react-native-actionsheet";
-import { pickFromCamera, pickFromGallery, uploadImage } from "./utils";
 import { OptionsContext, GlobalOptionsContext } from "@options";
 
 const Camera = () => {
   // More info on all the options is below in the API Reference... just some common use cases shown here
-  const actionSheet = useRef(ActionSheet);
+  const actionSheet = useRef(null);
   const options = useContext(OptionsContext);
   const gOptions = useContext(GlobalOptionsContext); // eslint-disable-next-line no-unused-vars
 
@@ -37,25 +35,7 @@ const Camera = () => {
 
   return <View style={_styles.nvblKOua}>
       <FlatList data={data} keyExtractor={item => item.id} renderItem={renderItem} />
-      <ActionSheet ref={actionSheet} title={"Select Image"} options={ImagePickerOptions} cancelButtonIndex={2} onPress={async index => {
-      let res;
-
-      switch (index) {
-        case 0:
-          res = await pickFromCamera();
-          break;
-
-        case 1:
-          res = await pickFromGallery();
-          break;
-      }
-
-      if (res) {
-        uploadImage(res, gOptions).then(() => {
-          fetchImages();
-        });
-      }
-    }} />
+      
       <TouchableOpacity onPress={() => actionSheet.current.show()} style={styles.photoBtn}>
         <Text style={styles.photoBtnTxt}>{buttonText}</Text>
       </TouchableOpacity>
