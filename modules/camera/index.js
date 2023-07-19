@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 import React, { useRef, useContext, useEffect, useState } from "react";
 import { Text, View, TouchableOpacity, FlatList, ImageBackground } from "react-native";
-import ActionSheet from "react-native-actionsheet";
-import { pickFromCamera, pickFromGallery, uploadImage } from "./utils";
+import { launchCamera } from 'react-native-image-picker';
+import { uploadImage } from "./utils";
 import { OptionsContext, GlobalOptionsContext } from "@options";
 
 const Camera = () => {
@@ -27,6 +27,27 @@ const Camera = () => {
     fetchImages();
   }, []);
 
+  const openCamera = () => {
+    const options = {
+      mediaType: 'photo',
+      quality: 1
+    };
+    launchCamera(options, response => {
+      if (response.didCancel) {
+        console.log('User cancelled camera capture');
+      } else if (response.error) {
+        console.log('Camera capture error: ', response.error);
+      } else if (response.uri) {
+        // Implement your logic to handle the captured image here
+        // You can upload the image or process it further
+        // For example, you can call the `uploadImage` function passing the `response` object
+        uploadImage(response, gOptions).then(() => {
+          fetchImages();
+        });
+      }
+    });
+  };
+
   const renderItem = ({
     item
   }) => <TouchableOpacity>
@@ -37,26 +58,8 @@ const Camera = () => {
 
   return <View style={_styles.KolcQQpM}>
       <FlatList data={data} keyExtractor={item => item.id} renderItem={renderItem} />
-      <ActionSheet ref={actionSheet} title={"Select Image"} options={ImagePickerOptions} cancelButtonIndex={2} onPress={async index => {
-      let res;
-
-      switch (index) {
-        case 0:
-          res = await pickFromCamera();
-          break;
-
-        case 1:
-          res = await pickFromGallery();
-          break;
-      }
-
-      if (res) {
-        uploadImage(res, gOptions).then(() => {
-          fetchImages();
-        });
-      }
-    }} />
-      <TouchableOpacity onPress={() => actionSheet.current.show()} style={styles.photoBtn}>
+      
+      <TouchableOpacity onPress={openCamera} style={styles.photoBtn}>
         <Text style={styles.photoBtnTxt}>{buttonText}</Text>
       </TouchableOpacity>
     </View>;
