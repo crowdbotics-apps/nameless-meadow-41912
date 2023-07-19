@@ -1,7 +1,8 @@
 import { StyleSheet } from "react-native";
 import React, { useRef, useContext, useEffect, useState } from "react";
 import { Text, View, TouchableOpacity, FlatList, ImageBackground } from "react-native";
-import ActionSheet from "react-native-actions-sheet";
+import ActionSheet from "react-native-actionsheet";
+import { pickFromCamera, pickFromGallery, uploadImage } from "./utils";
 import { OptionsContext, GlobalOptionsContext } from "@options";
 
 const Camera = () => {
@@ -34,9 +35,8 @@ const Camera = () => {
     }} style={styles.image}></ImageBackground>
     </TouchableOpacity>;
 
-  return <View style={_styles.nvblKOua}>
+  return <View style={_styles.KolcQQpM}>
       <FlatList data={data} keyExtractor={item => item.id} renderItem={renderItem} />
-
       <ActionSheet ref={actionSheet} title={"Select Image"} options={ImagePickerOptions} cancelButtonIndex={2} onPress={async index => {
       let res;
 
@@ -56,7 +56,6 @@ const Camera = () => {
         });
       }
     }} />
-
       <TouchableOpacity onPress={() => actionSheet.current.show()} style={styles.photoBtn}>
         <Text style={styles.photoBtnTxt}>{buttonText}</Text>
       </TouchableOpacity>
@@ -69,7 +68,7 @@ export default {
 };
 
 const _styles = StyleSheet.create({
-  nvblKOua: {
+  KolcQQpM: {
     flex: 1
   }
 });
