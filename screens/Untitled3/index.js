@@ -15,11 +15,14 @@ const Untitled3 = () => {
       flex: 1
     }}>
         <Pressable onPress={() => {
-        navigation.navigate("App Menu");
+        navigation.navigate("App Menu7");
       }}>
           <View style={styles.PRhPprgL}>
-            
+            <Pressable onPress={() => {
+            navigation.navigate("App Menu");
+          }}>
               <Text style={styles.DNPldiSu}>{"App Menu"}</Text>
+            </Pressable>
           </View>
         </Pressable>
       </ScrollView>
