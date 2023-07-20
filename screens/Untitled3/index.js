@@ -13,11 +13,16 @@ const Untitled3 = () => {
       padding: 10,
       position: "relative",
       flex: 1
-    }}><Pressable onPress={() => {
-        navigation.navigate("Camera");
-      }}><View style={styles.PRhPprgL}><Pressable onPress={() => {
-            navigation.navigate("App Menu");
-          }}><Text style={styles.DNPldiSu}>{"Camera"}</Text></Pressable></View></Pressable></ScrollView>
+    }}>
+        <Pressable onPress={() => {
+        navigation.navigate("App Menu");
+      }}>
+          <View style={styles.PRhPprgL}>
+            
+              <Text style={styles.DNPldiSu}>{"App Menu"}</Text>
+          </View>
+        </Pressable>
+      </ScrollView>
     </SafeAreaView>;
 };
 
