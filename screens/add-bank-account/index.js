@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, Image, TextInput, Pressable, ScrollView } from "react-native";
+import { Text, View, StyleSheet, TextInput, Pressable, ScrollView } from "react-native";
 
 const AddBankAccount = () => {
   const [user, setUser] = useState({});
@@ -10,14 +10,12 @@ const AddBankAccount = () => {
   useEffect(() => {
     setUser({
       name: "Username",
-      email: "username@email.com",
-      image: require("./assets/profilePicture.png")
+      email: "username@email.com"
     });
   }, []);
   return <View style={styles.container}>
       <ScrollView>
         <View style={styles.profileContainer}>
-          <Image source={user.image} style={styles.profilePicture} />
           <Text style={styles.profileName}>{user.name}</Text>
           <Text style={styles.profilemail}>{user.email}</Text>
         </View>
@@ -25,12 +23,12 @@ const AddBankAccount = () => {
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Bank account number</Text>
             <TextInput style={styles.input} onChangeText={text => setAccountNumber(text)} value={accountNumber} placeholder="Enter bank account number" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
-            <Image source={require("./assets/lockIcon.png")} style={styles.lockIcon} />
+            
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Confirm Bank account number</Text>
             <TextInput style={styles.input} onChangeText={text => setConfirmAccountNumber(text)} value={confirmAccountNumber} placeholder="Confirm bank account number" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
-            <Image source={require("./assets/lockIcon.png")} style={styles.lockIcon} />
+            
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Bank routing number</Text>
@@ -38,14 +36,13 @@ const AddBankAccount = () => {
           </View>
         </View>
         <View style={styles.bottomTextContainer}>
-          <Image source={require("./assets/lockIcon.png")} />
           <Text style={styles.bottomText}>
             Your personal information is securely stored and kept confidential!
           </Text>
         </View>
         <Button buttonText={"Save"} />
       </ScrollView>
-      <Footer titles={["Home", "Task", "Availability", "Account", "My Business"]} images={[require("./assets/homeIcon.png"), require("./assets/listIcon.png"), require("./assets/availabilityIcon.png"), require("./assets/accountIconActive.png"), require("./assets/businessIcon.png")]} active={3} />
+      <Footer titles={["Home", "Task", "Availability", "Account", "My Business"]} active={3} />
     </View>;
 };
 
@@ -119,7 +116,7 @@ export default AddBankAccount;
 const Footer = props => {
   return <View style={footerStyles.footer}>
       {props.titles.map((title, index) => <View style={footerStyles.footerItem} key={index}>
-          <Image style={footerStyles.footerImage} source={props.images[index]} />
+          
           <Text style={[footerStyles.footerItemText, index === props.active ? footerStyles.active : null]}>
             {title}
           </Text>
@@ -150,11 +147,6 @@ const footerStyles = StyleSheet.create({
     fontSize: 13,
     color: "#fff",
     marginTop: 5
-  },
-  footerImage: {
-    width: 20,
-    height: 20,
-    resizeMode: "contain"
   },
   active: {
     color: "#000"

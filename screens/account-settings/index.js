@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Text, StyleSheet, View, SafeAreaView, TextInput, Switch, ScrollView, Pressable, Image } from "react-native";
+import { Text, StyleSheet, View, SafeAreaView, TextInput, Switch, ScrollView, Pressable } from "react-native";
 
 const AccountSettingsScreen = () => {
   const navigation = useNavigation();
@@ -40,7 +40,7 @@ const AccountSettingsScreen = () => {
             navigation.navigate("addPaymentMethod");
           }}>
               <Text style={styles.btnText}>Continue</Text>
-              <Image source={require("./assets/arrow.png")} style={styles.arrow} />
+              
             </Pressable>
           </View>
         </View>

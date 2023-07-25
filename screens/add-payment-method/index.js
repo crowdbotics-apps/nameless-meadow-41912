@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Text, StyleSheet, View, ScrollView, SafeAreaView, Image, TextInput, Pressable } from "react-native";
+import { Text, StyleSheet, View, ScrollView, SafeAreaView, TextInput, Pressable } from "react-native";
 
 const AddPaymentMethodScreen = () => {
   const navigation = useNavigation();
@@ -13,13 +13,13 @@ const AddPaymentMethodScreen = () => {
       <ScrollView>
         <View style={styles.header}>
           <View style={styles.btnContainer}>
-          <Pressable style={styles.btn} onPress={() => {
+            <Pressable style={styles.btn} onPress={() => {
             navigation.navigate("addBankAccount");
           }}>
-            <Text style={styles.btnText}>use bank details instead</Text>
-            <Image source={require("./assets/arrow.png")} style={styles.arrow} />
-          </Pressable>
-        </View>
+              <Text style={styles.btnText}>use bank details instead</Text>
+              
+            </Pressable>
+          </View>
         </View>
         <View style={styles.inputs}>
           <View style={styles.inputContainer}>
@@ -46,7 +46,7 @@ const AddPaymentMethodScreen = () => {
           </View>
           <View style={styles.checkBoxContainer}>
             <Text style={styles.inputText}>Save this card details</Text>
-            <Image source={require("./assets/checkbox.png")} style={styles.checkBox} />
+           
           </View>
         </View>
         <View style={styles.btnContainer}>
@@ -54,7 +54,7 @@ const AddPaymentMethodScreen = () => {
           navigation.navigate("addReview");
         }}>
             <Text style={styles.btnText}>Continue</Text>
-            <Image source={require("./assets/arrow.png")} style={styles.arrow} />
+            
           </Pressable>
         </View>
       </ScrollView>
