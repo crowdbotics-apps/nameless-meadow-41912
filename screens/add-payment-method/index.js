@@ -1,7 +1,9 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Text, StyleSheet, View, ScrollView, SafeAreaView, Image, TextInput, Pressable } from "react-native";
 
-const AddPaymentMethodScreen = params => {
+const AddPaymentMethodScreen = () => {
+  const navigation = useNavigation();
   const [paymentOption, setPaymentOption] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cardExpiry, setCardExpiry] = useState("");
@@ -10,12 +12,14 @@ const AddPaymentMethodScreen = params => {
   return <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
-          <View style={styles.paletteContainer}>
-            <View style={styles.unSelected}></View>
-            <View style={styles.unSelected}></View>
-            <View style={styles.selected}></View>
-          </View>
-          <Image source={require("./assets/3Dots.png")} style={styles.threeDots} />
+          <View style={styles.btnContainer}>
+          <Pressable style={styles.btn} onPress={() => {
+            navigation.navigate("addBankAccount");
+          }}>
+            <Text style={styles.btnText}>use bank details instead</Text>
+            <Image source={require("./assets/arrow.png")} style={styles.arrow} />
+          </Pressable>
+        </View>
         </View>
         <View style={styles.inputs}>
           <View style={styles.inputContainer}>
@@ -46,7 +50,9 @@ const AddPaymentMethodScreen = params => {
           </View>
         </View>
         <View style={styles.btnContainer}>
-          <Pressable style={styles.btn}>
+          <Pressable style={styles.btn} onPress={() => {
+          navigation.navigate("addReview");
+        }}>
             <Text style={styles.btnText}>Continue</Text>
             <Image source={require("./assets/arrow.png")} style={styles.arrow} />
           </Pressable>
@@ -62,40 +68,6 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 20
-  },
-  paletteContainer: {
-    flexDirection: "row",
-    backgroundColor: "#F1F1F1",
-    height: 45,
-    width: "100%",
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "space-around",
-    paddingHorizontal: 5
-  },
-  selected: {
-    backgroundColor: "#fff",
-    height: "80%",
-    flex: 1,
-    padding: 10,
-    paddingHorizontal: 25,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#e6e6e6",
-    marginHorizontal: 5
-  },
-  unSelected: {
-    height: "80%",
-    flex: 1,
-    marginHorizontal: 5,
-    backgroundColor: "#12D790",
-    padding: 10,
-    paddingHorizontal: 25,
-    borderRadius: 10
-  },
-  threeDots: {
-    alignSelf: "center",
-    marginTop: 20
   },
   inputs: {
     paddingHorizontal: 20,
@@ -171,7 +143,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "bold"
   }
 });

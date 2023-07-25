@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, Image, TextInput, Pressable, ScrollView } from "react-native";
 
@@ -161,6 +162,7 @@ const footerStyles = StyleSheet.create({
 });
 
 const Button = params => {
+  const navigation = useNavigation();
   const btnStyle = {
     backgroundColor: params.outline ? "#fff" : "#000",
     borderColor: params.outline ? "#000" : "#fff",
@@ -170,7 +172,9 @@ const Button = params => {
     color: params.outline ? "#000" : "#fff"
   };
   return <View style={buttonStyles.btnContainer}>
-      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
+      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={() => {
+      navigation.navigate("addReview");
+    }}>
         <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
         <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
@@ -200,9 +204,5 @@ const buttonStyles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold"
-  },
-  childrenContainer: {
-    justifyContent: "center",
-    alignItems: "center"
   }
 });
