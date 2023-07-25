@@ -13,7 +13,7 @@ const Untitled1 = () => {
       position: 'relative',
       flex: 1
     }}><View style={styles.ozXRlOGc}><Pressable onPress={() => {
-          navigation.navigate("Chat");
+          navigation.navigate("accountSettings");
         }}><Text style={styles.aWNUffcs}>Lorem ipsum…</Text></Pressable></View></ScrollView>
     </SafeAreaView>;
 };

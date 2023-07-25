@@ -1,10 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Text, StyleSheet, View, SafeAreaView, TextInput, Switch, ScrollView } from "react-native";
+import { Text, StyleSheet, View, SafeAreaView, TextInput, Switch, ScrollView, Pressable, Image } from "react-native";
 
-const AccountSettingsScreen = params => {
+const AccountSettingsScreen = () => {
+  const navigation = useNavigation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
   const [notifications, setNotifications] = useState(false);
   const [emailNotifications, setEmailNotifications] = useState(false);
   const [smsNotifications, setSmsNotifications] = useState(false);
@@ -34,9 +35,13 @@ const AccountSettingsScreen = params => {
             <Text style={styles.inputText}>Email Address</Text>
             <TextInput style={styles.input} placeholder="Enter your Email Address" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} value={email} onChangeText={text => setEmail(text)} />
           </View>
-          <View style={styles.nameInput}>
-            <Text style={styles.inputText}>Card number</Text>
-            <TextInput style={styles.input} placeholder="Enter your Card Number" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} value={cardNumber} onChangeText={text => setCardNumber(text)} />
+          <View style={styles.btnContainer}>
+            <Pressable style={styles.btn} onPress={() => {
+            navigation.navigate("addPaymentMethod");
+          }}>
+              <Text style={styles.btnText}>Continue</Text>
+              <Image source={require("./assets/arrow.png")} style={styles.arrow} />
+            </Pressable>
           </View>
         </View>
         <View style={styles.togglesContainer}>
@@ -149,12 +154,35 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center"
   },
+  btnContainer: {
+    padding: 10,
+    paddingTop: 10,
+    paddingHorizontal: 40,
+    justifyContent: "center",
+    marginTop: 20
+  },
+  btn: {
+    backgroundColor: "black",
+    height: 50,
+    width: "100%",
+    padding: 10,
+    paddingHorizontal: 25,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row"
+  },
   toggleText: {
     fontSize: 16,
     fontWeight: "bold",
     padding: 2,
     marginVertical: 12,
     marginLeft: 20
+  },
+  btnText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold"
   }
 });
 export default AccountSettingsScreen;
