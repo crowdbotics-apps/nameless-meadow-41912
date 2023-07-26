@@ -1,14 +1,22 @@
+import { useNavigation } from "@react-navigation/native";
+import { Pressable } from "react-native";
 import React from "react";
 import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 
-const Untitled1 = () => {
+const Untitled1 = ({
+  route
+}) => {
+  const {} = route.params || {};
+  const navigation = useNavigation();
   return <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={{
       backgroundColor: '#f0f0f1',
       padding: 10,
       position: 'relative',
       flex: 1
-    }}><View style={styles.DzBCukXT}></View></ScrollView>
+    }}><Pressable onPress={() => {
+        navigation.navigate("accountSettings");
+      }}><View style={styles.DzBCukXT}></View></Pressable></ScrollView>
     </SafeAreaView>;
 };
 
@@ -23,8 +31,10 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     color: "#777777",
     position: "absolute",
-    left: 108,
-    top: 288
+    left: 101,
+    top: 264,
+    flexDirection: "row",
+    flex: 1
   }
 });
 export default Untitled1;
