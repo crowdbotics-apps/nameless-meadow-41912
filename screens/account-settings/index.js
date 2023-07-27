@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, SafeAreaView, TextInput, Switch, ScrollView } from "react-native";
+import { Text, StyleSheet, View, SafeAreaView, TextInput, Switch, ScrollView, TouchableOpacity } from "react-native";
 
 const AccountSettingsScreen = params => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
   const [notifications, setNotifications] = useState(false);
   const [emailNotifications, setEmailNotifications] = useState(false);
   const [smsNotifications, setSmsNotifications] = useState(false);
   const [deactivateAccount, setDeactivateAccount] = useState(false);
+
+  const handleSave = () => {// Handle save logic here
+  };
+
   return <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.subContainer}>
@@ -34,10 +37,9 @@ const AccountSettingsScreen = params => {
             <Text style={styles.inputText}>Email Address</Text>
             <TextInput style={styles.input} placeholder="Enter your Email Address" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} value={email} onChangeText={text => setEmail(text)} />
           </View>
-          <View style={styles.nameInput}>
-            <Text style={styles.inputText}>Card number</Text>
-            <TextInput style={styles.input} placeholder="Enter your Card Number" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} value={cardNumber} onChangeText={text => setCardNumber(text)} />
-          </View>
+          <TouchableOpacity style={styles.button} onPress={handleSave}>
+            <Text style={styles.buttonText}>Save</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.togglesContainer}>
           <View style={styles.toggle}>
@@ -91,16 +93,12 @@ const styles = StyleSheet.create({
   planDes: {
     flex: 0.4,
     padding: 10,
-    // borderWidth: 1,
-    // borderColor: '#979797',
     justifyContent: "center",
     alignItems: "flex-start"
   },
   subPricing: {
     flex: 0.6,
     padding: 10,
-    // borderWidth: 1,
-    // borderColor: '#979797',
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "center"
@@ -116,9 +114,7 @@ const styles = StyleSheet.create({
   },
   billingContainer: {
     flex: 0.5,
-    paddingHorizontal: 20 // borderWidth: 1,
-    // borderColor: '#979797',
-
+    paddingHorizontal: 20
   },
   billingText: {
     fontSize: 16,
@@ -126,6 +122,9 @@ const styles = StyleSheet.create({
     padding: 2,
     marginVertical: 12,
     marginLeft: 20
+  },
+  nameInput: {
+    marginBottom: 10
   },
   inputText: {
     fontSize: 16,
@@ -139,6 +138,18 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginVertical: 10,
     width: "100%"
+  },
+  button: {
+    backgroundColor: "#007AFF",
+    borderRadius: 10,
+    padding: 10,
+    alignItems: "center",
+    marginTop: 20
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold"
   },
   togglesContainer: {
     flex: 0.3,
