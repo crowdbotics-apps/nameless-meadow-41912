@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     width: 81,
-    height: 28,
+    height: 25,
     position: "relative",
     left: -12,
     top: -1
