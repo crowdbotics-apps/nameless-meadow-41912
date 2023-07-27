@@ -62,7 +62,12 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
-    textAlign: "center"
+    textAlign: "center",
+    width: 81,
+    height: 28,
+    position: "relative",
+    left: -12,
+    top: -1
   }
 });
 export default Screen;
