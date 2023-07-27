@@ -36,9 +36,9 @@ const AddBankAccount = () => {
             <TextInput style={styles.input} onChangeText={text => setRoutingNumber(text)} value={routingNumber} placeholder="Enter bank routing number" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
           </View>
         </View>
-        <View style={styles.bottomTextContainer}>
-          <Button buttonText={"Use card instead"} />
-        </View>
+
+        <Button buttonText={"Use card instead"} />
+
         <Button buttonText={"Save"} />
       </ScrollView>
       <Footer titles={["Home", "Task", "Availability", "Account", "My Business"]} images={[require("./assets/homeIcon.png"), require("./assets/listIcon.png"), require("./assets/availabilityIcon.png"), require("./assets/accountIconActive.png"), require("./assets/businessIcon.png")]} active={3} />
@@ -61,15 +61,16 @@ const styles = StyleSheet.create({
   },
   profileName: {
     fontSize: 20,
-    marginTop: 10
+    marginTop: 5
   },
   profilemail: {
     fontSize: 14,
     color: "grey"
   },
   inputs: {
-    marginTop: 40,
-    paddingHorizontal: 20
+    marginTop: 30,
+    paddingHorizontal: 20,
+    marginBottom: 10
   },
   inputContainer: {
     flexDirection: "column",
@@ -178,7 +179,7 @@ const buttonStyles = StyleSheet.create({
   btnContainer: {
     paddingHorizontal: 40,
     justifyContent: "center",
-    marginVertical: 20
+    marginTop: 20
   },
   btn: {
     backgroundColor: "black",
