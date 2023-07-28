@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, Image, TextInput, Pressable, ScrollView } from "react-native";
 
@@ -57,7 +58,8 @@ const styles = StyleSheet.create({
   profilePicture: {
     width: 100,
     height: 100,
-    borderRadius: 40
+    borderRadius: 40,
+    marginTop: 5
   },
   profileName: {
     fontSize: 20,
@@ -98,17 +100,6 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     resizeMode: "contain"
-  },
-  bottomTextContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    marginHorizontal: 20,
-    marginTop: 40
-  },
-  bottomText: {
-    fontSize: 12,
-    textAlign: "center",
-    marginHorizontal: 20
   }
 });
 export default AddBankAccount;
@@ -159,6 +150,7 @@ const footerStyles = StyleSheet.create({
 });
 
 const Button = params => {
+  const navigation = useNavigation();
   const btnStyle = {
     backgroundColor: params.outline ? "#fff" : "#000",
     borderColor: params.outline ? "#000" : "#fff",
@@ -168,7 +160,9 @@ const Button = params => {
     color: params.outline ? "#000" : "#fff"
   };
   return <View style={buttonStyles.btnContainer}>
-      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
+      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={() => {
+      navigation.navigate("addPaymentMethod");
+    }}>
         <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
         <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
@@ -198,9 +192,5 @@ const buttonStyles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold"
-  },
-  childrenContainer: {
-    justifyContent: "center",
-    alignItems: "center"
   }
 });
