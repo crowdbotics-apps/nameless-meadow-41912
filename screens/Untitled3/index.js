@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
-    width: 81,
-    height: 25,
+    width: 80,
+    height: 24,
     position: "relative",
     left: -12,
     top: -1
