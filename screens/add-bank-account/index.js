@@ -1,8 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, Image, TextInput, Pressable, ScrollView, SafeAreaView } from "react-native";
+import { Text, View, StyleSheet, Image, TextInput, ScrollView, SafeAreaView, TouchableOpacity } from "react-native";
 
 const AddBankAccount = () => {
+  const navigation = useNavigation();
   const [user, setUser] = useState({});
   const [accountNumber, setAccountNumber] = useState("");
   const [confirmAccountNumber, setConfirmAccountNumber] = useState("");
@@ -44,9 +45,21 @@ const AddBankAccount = () => {
           </View>
         </View>
 
-        <Button buttonText={"Use card instead"} buttonPress={"addPaymentMethod"} />
+        <View style={styles.btnContainer}>
+          <TouchableOpacity style={styles.button} onPress={() => {
+          navigation.navigate("addPaymentMethod");
+        }}>
+            <Text style={styles.buttonText}>{"Use Card Instead"}</Text>
+          </TouchableOpacity>
+        </View>
 
-        <Button buttonText={"Save"} buttonPress={"addReview"} />
+        <View style={styles.btnContainer}>
+          <TouchableOpacity style={styles.button} onPress={() => {
+          navigation.navigate("addReview");
+        }}>
+            <Text style={styles.buttonText}>{"Proceed"}</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
       <Footer titles={["Home", "Task", "Availability", "Account", "My Business"]} images={[{
       uri: "https://tinyurl.com/42evm3m3"
@@ -115,6 +128,29 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     resizeMode: "contain"
+  },
+  button: {
+    backgroundColor: "black",
+    height: 50,
+    width: "100%",
+    padding: 10,
+    paddingHorizontal: 25,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "rgba(0, 0, 0, 0.2)",
+    elevation: 10,
+    flexDirection: "row"
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold"
+  },
+  btnContainer: {
+    paddingHorizontal: 40,
+    justifyContent: "center",
+    marginTop: 20
   }
 });
 export default AddBankAccount;
@@ -161,51 +197,5 @@ const footerStyles = StyleSheet.create({
   },
   active: {
     color: "#000"
-  }
-});
-
-const Button = params => {
-  const navigation = useNavigation();
-  const btnStyle = {
-    backgroundColor: params.outline ? "#fff" : "#000",
-    borderColor: params.outline ? "#000" : "#fff",
-    borderWidth: 1
-  };
-  const btnText = {
-    color: params.outline ? "#000" : "#fff"
-  };
-  return <View style={buttonStyles.btnContainer}>
-      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={() => {
-      navigation.navigate(buttonPress);
-    }}>
-        <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
-        <View style={styles.childrenContainer}>{params.children}</View>
-      </Pressable>
-    </View>;
-};
-
-const buttonStyles = StyleSheet.create({
-  btnContainer: {
-    paddingHorizontal: 40,
-    justifyContent: "center",
-    marginTop: 20
-  },
-  btn: {
-    backgroundColor: "black",
-    height: 50,
-    width: "100%",
-    padding: 10,
-    paddingHorizontal: 25,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "rgba(0, 0, 0, 0.2)",
-    elevation: 10,
-    flexDirection: "row"
-  },
-  btnText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold"
   }
 });
