@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, Image, TextInput, Pressable, ScrollView } from "react-native";
+import { Text, View, StyleSheet, Image, TextInput, Pressable, ScrollView, SafeAreaView } from "react-native";
 
 const AddBankAccount = () => {
   const [user, setUser] = useState({});
@@ -11,10 +11,12 @@ const AddBankAccount = () => {
     setUser({
       name: "Username",
       email: "username@email.com",
-      image: require("./assets/profilePicture.png")
+      image: {
+        uri: "https://tinyurl.com/42evm3m3"
+      }
     });
   }, []);
-  return <View style={styles.container}>
+  return <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.profileContainer}>
           <Image source={user.image} style={styles.profilePicture} />
@@ -25,12 +27,16 @@ const AddBankAccount = () => {
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Bank account number</Text>
             <TextInput style={styles.input} onChangeText={text => setAccountNumber(text)} value={accountNumber} placeholder="Enter bank account number" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
-            <Image source={require("./assets/lockIcon.png")} style={styles.lockIcon} />
+            <Image source={{
+            uri: "https://tinyurl.com/42evm3m3"
+          }} style={styles.lockIcon} />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Confirm Bank account number</Text>
             <TextInput style={styles.input} onChangeText={text => setConfirmAccountNumber(text)} value={confirmAccountNumber} placeholder="Confirm bank account number" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
-            <Image source={require("./assets/lockIcon.png")} style={styles.lockIcon} />
+            <Image source={{
+            uri: "https://tinyurl.com/42evm3m3"
+          }} style={styles.lockIcon} />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Bank routing number</Text>
@@ -38,12 +44,22 @@ const AddBankAccount = () => {
           </View>
         </View>
 
-        <Button buttonText={"Use card instead"} />
+        <Button buttonText={"Use card instead"} buttonPress={"addPaymentMethod"} />
 
-        <Button buttonText={"Save"} />
+        <Button buttonText={"Save"} buttonPress={"addReview"} />
       </ScrollView>
-      <Footer titles={["Home", "Task", "Availability", "Account", "My Business"]} images={[require("./assets/homeIcon.png"), require("./assets/listIcon.png"), require("./assets/availabilityIcon.png"), require("./assets/accountIconActive.png"), require("./assets/businessIcon.png")]} active={3} />
-    </View>;
+      <Footer titles={["Home", "Task", "Availability", "Account", "My Business"]} images={[{
+      uri: "https://tinyurl.com/42evm3m3"
+    }, {
+      uri: "https://tinyurl.com/42evm3m3"
+    }, {
+      uri: "https://tinyurl.com/42evm3m3"
+    }, {
+      uri: "https://tinyurl.com/42evm3m3"
+    }, {
+      uri: "https://tinyurl.com/42evm3m3"
+    }]} active={3} />
+    </SafeAreaView>;
 };
 
 const styles = StyleSheet.create({
@@ -58,8 +74,7 @@ const styles = StyleSheet.create({
   profilePicture: {
     width: 100,
     height: 100,
-    borderRadius: 40,
-    marginTop: 5
+    borderRadius: 40
   },
   profileName: {
     fontSize: 20,
@@ -161,7 +176,7 @@ const Button = params => {
   };
   return <View style={buttonStyles.btnContainer}>
       <Pressable style={[buttonStyles.btn, btnStyle]} onPress={() => {
-      navigation.navigate("addPaymentMethod");
+      navigation.navigate(buttonPress);
     }}>
         <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
         <View style={styles.childrenContainer}>{params.children}</View>
