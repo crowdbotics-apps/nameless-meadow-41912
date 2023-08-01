@@ -16,7 +16,7 @@ const AddReviewScreen = () => {
         </View>
         <View style={styles.btnContainer}>
           <Pressable style={styles.btn} onPress={() => {
-          navigation.navigate("Camera");
+          navigation.navigate("");
         }}>
             <Text style={styles.btnText}>Submit</Text>
           </Pressable>
