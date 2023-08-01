@@ -1,7 +1,9 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Text, StyleSheet, View, ScrollView, SafeAreaView, Pressable, Image, TextInput } from "react-native";
 
-const AddReviewScreen = params => {
+const AddReviewScreen = () => {
+  const navigation = useNavigation();
   const [review, setReview] = useState("");
   return <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -13,7 +15,9 @@ const AddReviewScreen = params => {
           <TextInput style={styles.input} onChangeText={text => setReview(text)} value={review} placeholder="Enter your review" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} multiline={true} numberOfLines={10} />
         </View>
         <View style={styles.btnContainer}>
-          <Pressable style={styles.btn}>
+          <Pressable style={styles.btn} onPress={() => {
+          navigation.navigate("Camera");
+        }}>
             <Text style={styles.btnText}>Submit</Text>
           </Pressable>
         </View>
@@ -34,10 +38,6 @@ const styles = StyleSheet.create({
   },
   review: {
     padding: 20
-  },
-  inputText: {
-    fontSize: 16,
-    marginLeft: 20
   },
   input: {
     borderWidth: 1,
