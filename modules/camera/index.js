@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import React, { useRef, useContext, useEffect, useState } from "react";
 import { Text, View, TouchableOpacity, FlatList, ImageBackground } from "react-native";
-import ActionSheet from "react-native-actionsheet";
+import ActionSheet from "react-native-actions-sheet";
 import { pickFromCamera, pickFromGallery, uploadImage } from "./utils";
 import { OptionsContext, GlobalOptionsContext } from "@options";
 
