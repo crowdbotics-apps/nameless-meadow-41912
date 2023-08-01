@@ -14,6 +14,15 @@ function api_v1_login_create(payload) {
 function api_v1_signup_create(payload) {
   return namelessmeadowAPI.post(`/api/v1/signup/`, payload.data)
 }
+function modules_camera_photos_user_list(payload) {
+  return namelessmeadowAPI.get(`/modules/camera/photos/user/`)
+}
+function modules_camera_photos_user_retrieve(payload) {
+  return namelessmeadowAPI.get(`/modules/camera/photos/user/${payload.id}/`)
+}
+function modules_camera_upload_image_create(payload) {
+  return namelessmeadowAPI.post(`/modules/camera/upload_image/`)
+}
 function rest_auth_login_create(payload) {
   return namelessmeadowAPI.post(`/rest-auth/login/`, payload.data)
 }
@@ -57,6 +66,9 @@ export const apiService = {
   api_docs_schema_retrieve,
   api_v1_login_create,
   api_v1_signup_create,
+  modules_camera_photos_user_list,
+  modules_camera_photos_user_retrieve,
+  modules_camera_upload_image_create,
   rest_auth_login_create,
   rest_auth_logout_retrieve,
   rest_auth_logout_create,
