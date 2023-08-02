@@ -11,12 +11,12 @@ const Screen = () => {
           <TouchableOpacity style={[styles.button, styles.proceedButton]} onPress={() => {
           navigation.navigate("Untitled4");
         }}>
-            <Text style={styles.buttonText}>Proceed</Text>
+            <Text style={styles.buttonText}>{"Calculator"}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.button, styles.backButton]} onPress={() => {
-          navigation.goBack();
+          navigation.navigate("Untitled41");
         }}>
-            <Text style={styles.buttonText}>Back</Text>
+            <Text style={styles.buttonText}>{"Stopwatch"}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "80%"
+    width: 257,
+    height: 54
   },
   button: {
     flex: 1,
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
-    width: 80,
+    width: 106,
     height: 24,
     position: "relative",
     left: -12,
