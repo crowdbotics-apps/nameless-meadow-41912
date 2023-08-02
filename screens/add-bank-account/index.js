@@ -19,11 +19,7 @@ const AddBankAccount = () => {
   }, []);
   return <SafeAreaView style={styles.container}>
       <ScrollView>
-        <View style={styles.profileContainer}>
-          <Image source={user.image} style={styles.profilePicture} />
-          <Text style={styles.profileName}>{user.name}</Text>
-          <Text style={styles.profilemail}>{user.email}</Text>
-        </View>
+        
         <View style={styles.inputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Bank account number</Text>
@@ -79,23 +75,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  profileContainer: {
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  profilePicture: {
-    width: 100,
-    height: 100,
-    borderRadius: 40
-  },
-  profileName: {
-    fontSize: 20,
-    marginTop: 5
-  },
-  profilemail: {
-    fontSize: 14,
-    color: "grey"
   },
   inputs: {
     marginTop: 30,
