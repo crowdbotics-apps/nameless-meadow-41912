@@ -9,7 +9,7 @@ const Screen = () => {
         <Text style={styles.welcomeText}>Welcome!</Text>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={[styles.button, styles.proceedButton]} onPress={() => {
-          navigation.navigate("accountSettings");
+          navigation.navigate("Untitled4");
         }}>
             <Text style={styles.buttonText}>Proceed</Text>
           </TouchableOpacity>
