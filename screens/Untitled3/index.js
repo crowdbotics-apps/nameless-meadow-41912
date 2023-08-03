@@ -1,9 +1,17 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, BackHandler } from "react-native";
 
 const Screen = () => {
   const navigation = useNavigation();
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
+      // Close the app when the back button is pressed
+      BackHandler.exitApp();
+      return true; // Return true to prevent default back button behavior
+    });
+    return () => backHandler.remove(); // Clean up the event listener when the component unmounts
+  }, []);
   return <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.welcomeText}>Welcome!</Text>
@@ -13,7 +21,7 @@ const Screen = () => {
         }}>
             <Text style={styles.buttonText}>{"Calculator"}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.button, styles.backButton]} onPress={() => {
+          <TouchableOpacity style={[styles.button, styles.watchButton]} onPress={() => {
           navigation.navigate("Untitled41");
         }}>
             <Text style={styles.buttonText}>{"Stopwatch"}</Text>
@@ -55,7 +63,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#007AFF",
     marginRight: 10
   },
-  backButton: {
+  watchButton: {
     backgroundColor: "#FF3B30",
     marginLeft: 10
   },
