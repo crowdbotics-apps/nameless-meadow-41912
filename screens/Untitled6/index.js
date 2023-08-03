@@ -2,6 +2,8 @@ import { CheckBox } from "react-native-elements";
 import { FlatList } from "react-native";
 import React from "react";
 import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+const Stack = createStackNavigator();
 
 const Untitled6 = () => {
   return <SafeAreaView style={styles.safeArea}>
