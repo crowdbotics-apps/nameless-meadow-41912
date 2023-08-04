@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, BackHandler } from "react-native";
+import React, { useState, useRef } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, FlatList } from "react-native";
 
 const Untitled41 = () => {
   const [timer, setTimer] = useState(0);
@@ -7,15 +7,6 @@ const Untitled41 = () => {
   const [laps, setLaps] = useState([]);
   const intervalRef = useRef(null);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
-
-  const handleBackPress = () => {
-    return false; // Return false to allow the default back button behavior
-  };
-
-  useEffect(() => {
-    const backHandler = BackHandler.addEventListener("hardwareBackPress", handleBackPress);
-    return () => backHandler.remove();
-  }, []);
 
   const startTimer = () => {
     if (!isRunning) {

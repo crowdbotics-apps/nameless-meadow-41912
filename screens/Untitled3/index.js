@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, BackHandler } from "react-native";
 
-const Screen = () => {
+const Untitled3 = () => {
   const navigation = useNavigation();
   useEffect(() => {
     const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
     top: -1
   }
 });
-export default Screen;
+export default Untitled3;
