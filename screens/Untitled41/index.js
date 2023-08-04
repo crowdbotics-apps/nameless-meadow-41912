@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import React, { useState, useRef, useEffect } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, BackHandler } from "react-native";
 
 const Untitled41 = () => {
   const [timer, setTimer] = useState(0);
@@ -7,6 +7,14 @@ const Untitled41 = () => {
   const [laps, setLaps] = useState([]);
   const intervalRef = useRef(null);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
+      // Close the app when the back button is pressed
+      BackHandler.exitApp();
+      return false; // Return true to prevent default back button behavior
+    });
+    return () => backHandler.remove(); // Clean up the event listener when the component unmounts
+  }, []);
 
   const startTimer = () => {
     if (!isRunning) {
@@ -46,18 +54,24 @@ const Untitled41 = () => {
   };
 
   const formatTime = timeInSeconds => {
-    const hours = Math.floor(timeInSeconds / 3600).toString().padStart(2, '0');
-    const minutes = Math.floor(timeInSeconds % 3600 / 60).toString().padStart(2, '0');
-    const seconds = (timeInSeconds % 60).toString().padStart(2, '0');
+    const hours = Math.floor(timeInSeconds / 3600).toString().padStart(2, "0");
+    const minutes = Math.floor(timeInSeconds % 3600 / 60).toString().padStart(2, "0");
+    const seconds = (timeInSeconds % 60).toString().padStart(2, "0");
     return `${hours}:${minutes}:${seconds}`;
   };
 
   const renderLapItem = ({
     item
   }) => <View style={[styles.lapRow, themeStyles.lapRow]}>
-      <Text style={[styles.lapText, themeStyles.lapText]}>{item.lapNumber}</Text>
-      <Text style={[styles.lapText, themeStyles.lapText]}>{formatTime(item.lapTime)}</Text>
-      <Text style={[styles.lapText, themeStyles.lapText]}>{formatTime(item.totalTime)}</Text>
+      <Text style={[styles.lapText, themeStyles.lapText]}>
+        {item.lapNumber}
+      </Text>
+      <Text style={[styles.lapText, themeStyles.lapText]}>
+        {formatTime(item.lapTime)}
+      </Text>
+      <Text style={[styles.lapText, themeStyles.lapText]}>
+        {formatTime(item.totalTime)}
+      </Text>
     </View>;
 
   const toggleTheme = () => {
@@ -68,15 +82,17 @@ const Untitled41 = () => {
   return <View style={[styles.container, themeStyles.container]}>
       <TouchableOpacity style={styles.themeButton} onPress={toggleTheme}>
         <Text style={[styles.themeButtonText, themeStyles.themeButtonText]}>
-            {isDarkTheme ? 'Light ⚪' : 'Dark ⚫'}
-          </Text>
-        </TouchableOpacity>
+          {isDarkTheme ? "Light ⚪" : "Dark ⚫"}
+        </Text>
+      </TouchableOpacity>
       <View style={[styles.upper, themeStyles.upper]}>
-        <Text style={[styles.timer, themeStyles.timer]}>{formatTime(timer)}</Text>  
+        <Text style={[styles.timer, themeStyles.timer]}>
+          {formatTime(timer)}
+        </Text>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={[styles.button, isRunning ? styles.stopButton : styles.startButton]} onPress={isRunning ? stopTimer : startTimer}>
             <Text style={styles.buttonText}>
-              {isRunning ? 'Stop' : 'Start'}
+              {isRunning ? "Stop" : "Start"}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.button, styles.lapButton]} onPress={lapTimer} disabled={!isRunning}>
@@ -88,10 +104,14 @@ const Untitled41 = () => {
         </View>
       </View>
       <View style={styles.lapsContainer}>
-      <View style={styles.tableHeader}>
+        <View style={styles.tableHeader}>
           <Text style={[styles.headerText, themeStyles.headerText]}>Lap</Text>
-          <Text style={[styles.headerText, themeStyles.headerText]}>Lap Time</Text>
-          <Text style={[styles.headerText, themeStyles.headerText]}>Total Time</Text>
+          <Text style={[styles.headerText, themeStyles.headerText]}>
+            Lap Time
+          </Text>
+          <Text style={[styles.headerText, themeStyles.headerText]}>
+            Total Time
+          </Text>
         </View>
         <FlatList data={laps} renderItem={renderLapItem} keyExtractor={(item, index) => index.toString()} contentContainerStyle={styles.lapsContentContainer} />
       </View>
@@ -101,86 +121,86 @@ const Untitled41 = () => {
 const darkStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1E1E1E'
+    backgroundColor: "#1E1E1E"
   },
   timer: {
-    color: '#FFFFFF'
+    color: "#FFFFFF"
   },
   headerText: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
+    color: "#FFFFFF",
+    fontWeight: "bold",
     fontSize: 16,
     borderBottomWidth: 1,
-    borderColor: '#FF2'
+    borderColor: "#FF2"
   },
   lapText: {
     fontSize: 16,
-    color: 'white',
+    color: "white",
     paddingVertical: 10
   },
   lapRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 5,
     borderBottomWidth: 1,
-    borderBlockColor: '#FF3'
+    borderBlockColor: "#FF3"
   },
   themeButtonText: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#ffffff'
+    fontWeight: "bold",
+    color: "#ffffff"
   }
 });
 const lightStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: "#FFFFFF"
   },
   timer: {
-    color: '#000000'
+    color: "#000000"
   },
   headerText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 16,
-    color: 'black',
+    color: "black",
     borderBottomWidth: 1,
-    borderColor: 'gray'
+    borderColor: "gray"
   },
   lapText: {
     fontSize: 16,
-    color: '#333333',
+    color: "#333333",
     paddingVertical: 10
   },
   lapRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 5,
     borderBottomWidth: 1,
-    borderBlockColor: 'gray'
+    borderBlockColor: "gray"
   },
   themeButtonText: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: 'black'
+    fontWeight: "bold",
+    color: "black"
   }
 });
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center"
   },
   upper: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center"
   },
   timer: {
     fontSize: 60,
     margin: 14
   },
   buttonContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 20
   },
   button: {
@@ -190,37 +210,37 @@ const styles = StyleSheet.create({
     paddingVertical: 10
   },
   startButton: {
-    backgroundColor: '#4caf50'
+    backgroundColor: "#4caf50"
   },
   stopButton: {
-    backgroundColor: 'orange'
+    backgroundColor: "orange"
   },
   lapButton: {
-    backgroundColor: '#2196f3'
+    backgroundColor: "#2196f3"
   },
   resetButton: {
-    backgroundColor: 'red'
+    backgroundColor: "red"
   },
   buttonText: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   },
   lapsContainer: {
     flex: 1,
-    width: '100%',
+    width: "100%",
     paddingHorizontal: 20
   },
   tableHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 10
   },
   lapsContentContainer: {
     paddingBottom: 20
   },
   themeButton: {
-    position: 'absolute',
+    position: "absolute",
     top: 10,
     left: 10,
     paddingHorizontal: 10,
