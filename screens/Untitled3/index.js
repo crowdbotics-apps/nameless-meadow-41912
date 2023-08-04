@@ -10,7 +10,7 @@ const Screen = () => {
       BackHandler.exitApp();
       return true; // Return true to prevent default back button behavior
     });
-    return () => backHandler.remove(); // Clean up the event listener when the component unmounts
+    return () => backHandler.remove();
   }, []);
   return <SafeAreaView style={styles.container}>
       <View style={styles.content}>

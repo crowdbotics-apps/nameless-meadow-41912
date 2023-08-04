@@ -7,13 +7,14 @@ const Untitled41 = () => {
   const [laps, setLaps] = useState([]);
   const intervalRef = useRef(null);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const handleBackPress = () => {
+    return false; // Return false to allow the default back button behavior
+  };
+
   useEffect(() => {
-    const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
-      // Close the app when the back button is pressed
-      BackHandler.exitApp();
-      return false; // Return true to prevent default back button behavior
-    });
-    return () => backHandler.remove(); // Clean up the event listener when the component unmounts
+    const backHandler = BackHandler.addEventListener("hardwareBackPress", handleBackPress);
+    return () => backHandler.remove();
   }, []);
 
   const startTimer = () => {
