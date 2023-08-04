@@ -1,22 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useEffect } from "react";
-import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, BackHandler } from "react-native";
+import React from "react";
+import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet } from "react-native";
 
 const Untitled3 = () => {
   const navigation = useNavigation();
-
-  const handleBackButton = () => {
-    navigation.goBack(); // Go back to the previous screen
-
-    return true; // Return true to prevent default back button behavior
-  };
-
-  useEffect(() => {
-    // Add the back button event listener
-    BackHandler.addEventListener("hardwareBackPress", handleBackButton); // Remove the back button event listener when the component unmounts
-
-    return () => BackHandler.removeEventListener("hardwareBackPress", handleBackButton);
-  }, []);
   return <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.welcomeText}>Welcome!</Text>
