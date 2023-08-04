@@ -4,13 +4,18 @@ import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, BackHandler } f
 
 const Untitled3 = () => {
   const navigation = useNavigation();
+
+  const handleBackButton = () => {
+    navigation.goBack(); // Go back to the previous screen
+
+    return true; // Return true to prevent default back button behavior
+  };
+
   useEffect(() => {
-    const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
-      // Close the app when the back button is pressed
-      BackHandler.exitApp();
-      return true; // Return true to prevent default back button behavior
-    });
-    return () => backHandler.remove();
+    // Add the back button event listener
+    BackHandler.addEventListener("hardwareBackPress", handleBackButton); // Remove the back button event listener when the component unmounts
+
+    return () => BackHandler.removeEventListener("hardwareBackPress", handleBackButton);
   }, []);
   return <SafeAreaView style={styles.container}>
       <View style={styles.content}>
