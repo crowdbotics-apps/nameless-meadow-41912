@@ -9,13 +9,13 @@ function api_docs_schema_retrieve(payload) {
   })
 }
 function api_v1_login_create(payload) {
-  return namelessmeadowAPI.post(`/api/v1/login/`, payload.data)
+  return namelessmeadowAPI.post(`/api/v1/login/`, payload)
 }
 function api_v1_signup_create(payload) {
-  return namelessmeadowAPI.post(`/api/v1/signup/`, payload.data)
+  return namelessmeadowAPI.post(`/api/v1/signup/`, payload)
 }
 function rest_auth_login_create(payload) {
-  return namelessmeadowAPI.post(`/rest-auth/login/`, payload.data)
+  return namelessmeadowAPI.post(`/rest-auth/login/`, payload)
 }
 function rest_auth_logout_retrieve(payload) {
   return namelessmeadowAPI.get(`/rest-auth/logout/`)
@@ -24,34 +24,31 @@ function rest_auth_logout_create(payload) {
   return namelessmeadowAPI.post(`/rest-auth/logout/`)
 }
 function rest_auth_password_change_create(payload) {
-  return namelessmeadowAPI.post(`/rest-auth/password/change/`, payload.data)
+  return namelessmeadowAPI.post(`/rest-auth/password/change/`, payload)
 }
 function rest_auth_password_reset_create(payload) {
-  return namelessmeadowAPI.post(`/rest-auth/password/reset/`, payload.data)
+  return namelessmeadowAPI.post(`/rest-auth/password/reset/`, payload)
 }
 function rest_auth_password_reset_confirm_create(payload) {
-  return namelessmeadowAPI.post(
-    `/rest-auth/password/reset/confirm/`,
-    payload.data
-  )
+  return namelessmeadowAPI.post(`/rest-auth/password/reset/confirm/`, payload)
 }
 function rest_auth_registration_create(payload) {
-  return namelessmeadowAPI.post(`/rest-auth/registration/`, payload.data)
+  return namelessmeadowAPI.post(`/rest-auth/registration/`, payload)
 }
 function rest_auth_registration_verify_email_create(payload) {
   return namelessmeadowAPI.post(
     `/rest-auth/registration/verify-email/`,
-    payload.data
+    payload
   )
 }
 function rest_auth_user_retrieve(payload) {
   return namelessmeadowAPI.get(`/rest-auth/user/`)
 }
 function rest_auth_user_update(payload) {
-  return namelessmeadowAPI.put(`/rest-auth/user/`, payload.data)
+  return namelessmeadowAPI.put(`/rest-auth/user/`, payload)
 }
 function rest_auth_user_partial_update(payload) {
-  return namelessmeadowAPI.patch(`/rest-auth/user/`, payload.data)
+  return namelessmeadowAPI.patch(`/rest-auth/user/`, payload)
 }
 export const apiService = {
   api_docs_schema_retrieve,
